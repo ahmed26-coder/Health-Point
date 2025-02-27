@@ -5,6 +5,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { IoArrowForwardCircle } from "react-icons/io5";
 import { FaQuoteLeft } from "react-icons/fa";
 import Data from "./Components/Data";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
             Book appointment
           </button>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 flex-grow">
+        <div className="grid grid-cols-2 z-0 sm:grid-cols-3 gap-4 flex-grow">
           <img
             className="w-full h-[120px] sm:h-[160px] md:h-[180px] lg:h-[200px] object-cover rounded-lg"
             src="/home1.png"
@@ -85,19 +86,25 @@ export default function Home() {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 mx-[15%]">
           {DataCard.map((item) => (
-            <article
-              key={item.id}
-              className="bg-white rounded-lg p-4 flex flex-col border-1 border-gray-200"
-            >
-              <img src={item.img} alt={item.title} className=" w-[25%] mb-15" />
-              <p className="text-gray-600 text-sm text-center mb-15">
-                {item.dish}
-              </p>
-              <div className=" border-1 border-gray-200 w-full mt-4"></div>
-              <h2 className="text-lg font-semibold flex items-center text-center gap-2 mt-3 text-blue-600 hover:text-green-600">
-                {item.title} <IoIosArrowForward className=" ml-40" />
-              </h2>
-            </article>
+            <Link href={`/Services/${item.id}`} key={item.id} prefetch={true}>
+              <article
+                key={item.id}
+                className="bg-white hover:bg-gray-50 rounded-lg p-4 flex flex-col border-1 border-gray-200"
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className=" z-0 w-[25%] mb-15"
+                />
+                <p className="text-gray-600 text-sm text-center mb-15">
+                  {item.dish}
+                </p>
+                <div className=" border-1 border-gray-200 w-full mt-4"></div>
+                <h2 className="md:text-lg font-semibold flex justify-between items-center mt-3 text-blue-600">
+                  {item.title} <IoIosArrowForward className="" />
+                </h2>
+              </article>
+            </Link>
           ))}
         </div>
         <button className=" text-lg text-bg2 border-1 border-bg2 px-3 py-0.5 rounded-sm mx-[15%] mt-5 hover:bg-bg2 hover:text-white">
@@ -118,7 +125,7 @@ export default function Home() {
           </div>
         </div>
         <div className="bg-white p-5   md:p-10 w-[90%] md:w-[100%]">
-          <h1 className="text-3xl font-bold text-gray-800">
+          <h1 className=" text-2xl md:text-3xl font-bold text-gray-800">
             Support Groups for Depression & Anxiety
           </h1>
           <p className="text-gray-600 mt-3">
@@ -133,32 +140,34 @@ export default function Home() {
       </div>
       <div className="mt-[5%] grid grid-cols-1 md:grid-cols-4 mx-[10%]">
         {MeetDoctors.map((item) => (
-          <article
-            className={`mb-[5%] ${
-              Number(item.id) === 1 ||
-              Number(item.id) === 3 ||
-              Number(item.id) === 5 ||
-              Number(item.id) === 7
-                ? "md:mt-20"
-                : ""
-            }`}
-            key={item.id}
-          >
-            <div className="relative">
-              <img src={item.img} alt="Doctor" />
-              <div className="absolute text-3xl p-1 flex gap-3 bottom-0 left-0 bg-white rounded-bl-lg rounded-tr-lg">
-                <p className="hover:text-blue-600">{item.icon1}</p>
-                <p className="hover:text-blue-400">{item.icon2}</p>
-                <p className="hover:text-blue-500">{item.icon3}</p>
+          <Link href={`/Doctors/${item.id}`} key={item.id} prefetch={true}>
+            <article
+              className={`mb-[5%] ${
+                Number(item.id) === 1 ||
+                Number(item.id) === 3 ||
+                Number(item.id) === 5 ||
+                Number(item.id) === 7
+                  ? "md:mt-20"
+                  : ""
+              }`}
+              key={item.id}
+            >
+              <div className="relative">
+                <img className="z-0" src={item.img} alt="Doctor" />
+                <div className="absolute text-3xl p-1 flex gap-3 bottom-0 left-0 bg-white rounded-bl-lg rounded-tr-lg">
+                  <p className="hover:text-blue-600">{item.icon1}</p>
+                  <p className="hover:text-blue-400">{item.icon2}</p>
+                  <p className="hover:text-blue-500">{item.icon3}</p>
+                </div>
               </div>
-            </div>
-            <h2 className="text-lg font-bold mt-2">{item.title}</h2>
-            <small className="text-base text-gray-600">{item.dish}</small>
-          </article>
+              <h2 className="text-lg font-bold mt-2">{item.title}</h2>
+              <small className="text-base text-gray-600">{item.dish}</small>
+            </article>
+          </Link>
         ))}
       </div>
 
-      <button className=" border-1 border-button rounded-lg text-button py-1 px-4 flex mx-auto mt-10 ">
+      <button className=" border-1 border-button rounded-lg text-button py-1 px-4 flex mx-auto mt-10 hover:bg-button hover:text-white ">
         View More
       </button>
 
@@ -198,7 +207,7 @@ export default function Home() {
           </div>
 
           <img
-            className=" w-[70%] mt-3 md:mt-[4%] rounded-md left-1/2 md:left-auto"
+            className=" w-[70%] z-0 mt-3 md:mt-[4%] rounded-md left-1/2 md:left-auto"
             src="/happy.png"
             alt=""
           />

@@ -19,7 +19,7 @@ const page = () => {
           <img
             src={doctor.img}
             alt={doctor.title}
-            className="rounded-lg w-full h-auto md:max-h-[400px] object-cover"
+            className="rounded-lg z-0 w-full h-auto md:max-h-[400px] object-cover"
           />
         </div>
         <div className="w-full md:w-2/3">
@@ -88,7 +88,7 @@ const page = () => {
                 <img
                   src={award.img}
                   alt={award.title}
-                  className="object-contain w-[20%] md:w-[30%] mb-3"
+                  className="object-contain z-0 w-[20%] md:w-[30%] mb-3"
                 />
                 <h3 className="font-bold text-gray-800 text-lg">
                   {award.title}

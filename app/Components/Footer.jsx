@@ -3,8 +3,8 @@ import { IoLogoLinkedin } from "react-icons/io";
 
 const Footer = () => {
   return (
-    <footer className=" text-gray-800 py-10 px-5">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-28 md:px-30">
+    <footer className=" text-gray-800 py-10 pl-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-20 md:px-40">
         <div>
           <div className="flex items-center mb-4">
             <img src="/Vector.png" alt="logo" className="w-10 h-10" />
@@ -16,7 +16,7 @@ const Footer = () => {
             years, sometimes.
           </p>
         </div>
-
+<div className=" flex flex-wrap sm:flex-row md:flex gap-5 md:gap-30 justify-between px-5 md:px-0 ">
         <div>
           <h1 className="text-lg font-semibold mb-3">Departments</h1>
           <ul className="space-y-[6px]">
@@ -46,7 +46,7 @@ const Footer = () => {
             <li className="hover:text-blue-500 cursor-pointer">Contact</li>
           </ul>
         </div>
-
+</div>
         <div>
           <h1 className="text-lg font-semibold mb-3">Quick Links</h1>
           <ul className="space-y-[6px]">

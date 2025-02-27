@@ -27,7 +27,7 @@ const page = () => {
             }`}
           >
             <div className="relative">
-              <img src={item.img} alt="Doctor" />
+              <img className=" z-0" src={item.img} alt="Doctor" />
               <div className="absolute text-3xl p-1 flex gap-3 bottom-0 left-0 bg-white rounded-bl-lg rounded-tr-lg">
                 <p className="hover:text-blue-600">{item.icon1}</p>
                 <p className="hover:text-blue-400">{item.icon2}</p>
@@ -40,7 +40,7 @@ const page = () => {
           </Link>
         ))}
       </div>
-      <button className=" border-1 border-button rounded-lg text-button py-1 px-4 flex mx-auto mt-10 ">
+      <button className=" border-1 border-button rounded-lg text-button py-1 px-4 flex mx-auto mt-10 hover:bg-button hover:text-white ">
         View More
       </button>
       <Data />

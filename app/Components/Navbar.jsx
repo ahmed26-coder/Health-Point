@@ -52,7 +52,7 @@ const Navbar = () => {
         {menuOpen ? <HiX /> : <HiMenu />}
       </button>
       <div
-        className={`fixed top-0 right-0 rounded-bl-2xl w-3/4 bg-white shadow-lg p-5 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 rounded-bl-2xl w-3/4 z-50 bg-white shadow-lg p-5 transform transition-transform duration-300 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         } md:hidden`}
       >

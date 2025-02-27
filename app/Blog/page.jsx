@@ -13,7 +13,7 @@ const page = () => {
           desktop publishing
         </p>
       </div>
-      <div className="grid grid-cols-3 gap-5 mx-[8%] mt-[3%] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 mx-[8%] mt-[3%] grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {DataDoctors.map((item) => (
           <Link href={`/Blog/${item.id}`} key={item.id} prefetch={true}>
             <article className="cursor-pointer">
@@ -21,7 +21,7 @@ const page = () => {
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full rounded-lg"
+                  className="w-full z-0 rounded-lg"
                 />
                 <h5 className="absolute bg-button text-white py-0.5 px-2 rounded-md top-4 left-4">
                   {item.type}
