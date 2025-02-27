@@ -18,13 +18,13 @@ const DoctorDetails = () => {
     return <p className="text-center text-red-500">Doctor not found</p>;
   }
 
-  const [visibleCards, setVisibleCards] = useState(3); 
+  const [visibleCards, setVisibleCards] = useState(3);
 
   const showMoreCards = () => {
     setVisibleCards((prev) => prev + 3);
   };
 
-  return (   
+  return (
     <>
       <div className="bg-bg flex flex-col md:flex-row justify-center items-center gap-5 md:gap-[10%] text-center py-7 md:px-0 px-2">
         <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-text w-full md:w-[40%]">
@@ -155,36 +155,43 @@ const DoctorDetails = () => {
           </div>
         </div>
       </div>
-      <div className="bg-bg px-[15%] py-10">
-      <div className="flex justify-between items-center mb-5">
-        <h2 className="text-text text-3xl font-bold">Latest blog & news</h2>
-        {visibleCards < DataDoctors.length && (
-          <button onClick={showMoreCards} className="flex  hover:text-blue-900 text-lg font-bold items-center text-blue-600">
-            View More <IoArrowForward className="text-lg font-black ml-2 mt-1" />
-          </button>
-        )}
+      <div className="bg-bg px-[15%] md:mt-10 py-10">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-5">
+          <h2 className="text-text text-lg md:text-3xl font-bold">
+            Latest blog & news
+          </h2>
+          {visibleCards < DataDoctors.length && (
+            <button
+              onClick={showMoreCards}
+              className="flex hover:text-blue-900 text-lg font-bold items-center text-blue-600"
+            >
+              View More{" "}
+              <IoArrowForward className="text-sm md:text-lg font-black ml-2 mt-1" />
+            </button>
+          )}
+          
+        </div>
+        <div className="flex gap-6 overflow-x-auto scrollbar-hidden">
+          {DataDoctors.slice(0, visibleCards).map((item) => (
+            <Link href={`/Blog/${item.id}`} key={item.id} prefetch={true}>
+              <article className="cursor-pointer border-2 p-2 border-bg hover:border-gray-300 rounded-lg min-w-[300px]">
+                <div className="relative">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full z-0 rounded-lg"
+                  />
+                  <h5 className="absolute bg-button text-white py-0.5 px-2 rounded-md top-4 left-4">
+                    {item.type}
+                  </h5>
+                </div>
+                <h1 className="text-lg mt-1 text-text">{item.title}</h1>
+                <small className="text-gray-400">{item.dish}</small>
+              </article>
+            </Link>
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {DataDoctors.slice(0, visibleCards).map((item) => (
-          <Link href={`/Blog/${item.id}`} key={item.id} prefetch={true}>
-            <article className="cursor-pointer border-2 p-2 border-bg hover:border-gray-300 rounded-lg">
-              <div className="relative">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full z-0 rounded-lg"
-                />
-                <h5 className="absolute bg-button text-white py-0.5 px-2 rounded-md top-4 left-4">
-                  {item.type}
-                </h5>
-              </div>
-              <h1 className="text-lg mt-1 text-text">{item.title}</h1>
-              <small className="text-gray-400">{item.dish}</small>
-            </article>
-          </Link>
-        ))}
-      </div>
-    </div>
     </>
   );
 };
